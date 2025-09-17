@@ -1,8 +1,7 @@
 import os
 
-
 base_path = os.path.dirname(os.path.abspath(__file__))
-full_path = os.path.join(base_path, 'src', 'masks')
+full_path = os.path.join(base_path, "src", "masks")
 
 
 def get_mask_card_number(card_number: str) -> str:

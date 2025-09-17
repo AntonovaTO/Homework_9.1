@@ -1,8 +1,9 @@
-from src.masks import get_mask_account, get_mask_card_number
 from datetime import datetime
 
+from src.masks import get_mask_account, get_mask_card_number
 
-def mask_account_card(card_number: str) -> (str, str):
+
+def mask_account_card(card_number: str) -> str:
     """Функция для маскировки номера карты/счета"""
 
     # Разделяем строку на части
@@ -27,16 +28,16 @@ def mask_account_card(card_number: str) -> (str, str):
 
 def get_date(date_str: str) -> str:
     """Функция которая принимает на вход строку с датой в формате
-    "2024-03-11T02:26:18.671407"
-    и возвращает строку с датой в формате "ДД.ММ.ГГГГ" """
+    '2024-03-11T02:26:18.671407'
+    и возвращает строку с датой в формате 'ДД.ММ.ГГГГ'"""
     try:
-        return datetime.fromisoformat(date_str.replace('Z', '')).strftime('%d.%m.%Y')
+        return datetime.fromisoformat(date_str.replace("Z", "")).strftime("%d.%m.%Y")
     except ValueError:
         return date_str
 
 
 if __name__ == "__main__":
     print(mask_account_card("Visa Platinum 7000792289606361"))  # Visa Platinum 7000 92** **** 6361
-    print(mask_account_card("Maestro 7000792289606361"))       # Maestro 7000 92** **** 6361
-    print(mask_account_card("Счет 73654108430135874305"))      # Счет **4305
-    print(get_date("2024-03-11T02:26:18.671407"))              # "ДД.ММ.ГГГГ"
+    print(mask_account_card("Maestro 7000792289606361"))  # Maestro 7000 92** **** 6361
+    print(mask_account_card("Счет 73654108430135874305"))  # Счет **4305
+    print(get_date("2024-03-11T02:26:18.671407"))  # "ДД.ММ.ГГГГ"
