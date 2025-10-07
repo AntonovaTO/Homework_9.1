@@ -17,12 +17,23 @@ def test_mask_card_number(mask_card_number: str) -> None:
 @pytest.fixture
 def input_len_card_number() -> str:
     """Фикстура для ошибки количества символов"""
-    return "706361"
+    return "70007922896063610000"
 
 
 def test_input_len_card_number(input_len_card_number: str) -> None:
     """Тест функции get_mask_card_number на ошибку количества символов"""
     assert get_mask_card_number(input_len_card_number) == "Ошибка: Номер карты должен содержать 16 цифр"
+
+
+@pytest.fixture
+def input_empty_card_number() -> str:
+    """Фикстура для ошибки пустого ввода"""
+    return ""
+
+
+def test_input_empty_card_number(input_empty_card_number: str) -> None:
+    """Тест функции get_mask_card_number на ошибку пустого ввода"""
+    assert get_mask_card_number(input_empty_card_number) == "Ошибка: Номер карты должен содержать 16 цифр"
 
 
 @pytest.mark.parametrize(
