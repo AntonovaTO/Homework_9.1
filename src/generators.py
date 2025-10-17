@@ -1,6 +1,5 @@
 # список транзакций
 transactions = [
-
         {
             "id": 939719570,
             "state": "EXECUTED",
@@ -81,6 +80,7 @@ transactions = [
 from typing import Iterator, List
 
 
+
 def filter_by_currency(transactions: list, code: str) -> Iterator:
     """ Возвращает итератор, который поочередно выдает транзакции, где валюта операции соответствует заданной """
     return filter(lambda transaction: transaction["operationAmount"]["currency"]["code"] == code, transactions)
@@ -121,7 +121,10 @@ for _ in range(2):
 #     "to": "Счет 75651667383060284188"
 # }
 
+
+
 def transaction_descriptions(transactions: list) -> Iterator:
+    """возвращает описание каждой операции по очереди"""
     for item in transactions:
         yield item["description"]
 
@@ -136,3 +139,21 @@ for _ in range(5):
 #     Перевод с карты на карту
 #     Перевод организации
 
+
+
+def card_number_generator(start: int, end: int) -> Iterator[str]:
+    """Генератор номеров банковских карт в заданном диапазоне"""
+    for number in range(start, end + 1):
+        card_str = f"{number:016d}" # Превращает 1 в '0000000000000001'
+        formatted_card = " ".join([card_str[i:i+4] for i in range(0, 16, 4)]) # Превращает в 0000 0000 0000 0001
+        yield formatted_card
+
+
+for card_number in card_number_generator(1, 5):
+    print(card_number)
+
+# >>> 0000 0000 0000 0001
+#     0000 0000 0000 0002
+#     0000 0000 0000 0003
+#     0000 0000 0000 0004
+#     0000 0000 0000 0005
