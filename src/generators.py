@@ -108,7 +108,7 @@ for _ in range(5):
 #     Перевод организации
 
 
-def card_number_generator(start: int, end: int) -> Iterator[str]:
+def card_number_generator(start: int, stop: int) -> Iterator[str]:
     """Генератор номеров банковских карт в заданном диапазоне"""
     for number in range(start, end + 1):
         card_str = f"{number:016d}"  # Превращает 1 в '0000000000000001'
