@@ -1,0 +1,7 @@
+my_function ok
+my_function ok
+file_func ok
+file_func ok
+file_func ok
+file_func ok
+file_func ok
